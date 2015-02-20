@@ -30,7 +30,7 @@ def main():
             ntpdos.stack.append(server.strip())
         while not 0:
             ntpdos.core()
-            if "--interval" in sys.argv:
+            if "--interval" in sys.argv and float(sys.argv[sys.argv.index("--interval") + 1]) != 0:
                 time.sleep(float(sys.argv[sys.argv.index("--interval") + 1]) / 1000)
     return 0
 
